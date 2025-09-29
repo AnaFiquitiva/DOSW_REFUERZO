@@ -1,105 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+<!-- Parent: Spring Boot Starter (versión estable) -->
+<parent>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-parent</artifactId>
+	<version>3.2.4</version>
+	<relativePath/> <!-- lookup parent from repository -->
+</parent>
+
+<groupId>eci.edu.dosw.refuerzo</groupId>
+<artifactId>DOSW_REFUERZO</artifactId>
+<version>0.0.1-SNAPSHOT</version>
+<name>DOSW_REFUERZO</name>
+<description>Refuerzo semanal de DOSW equipo Azul</description>
+
+<properties>
+	<java.version>17</java.version>
+</properties>
+
+<!-- DEPENDENCIAS -->
+<dependencies>
+	<!-- Spring Boot Web (necesario para Swagger y APIs REST) -->
+	<dependency>
 		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.0.0-SNAPSHOT</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>eci.edu.dosw.refuerzo</groupId>
-	<artifactId>DOSW_REFUERZO</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>DOSW_REFUERZO</name>
-	<description>Refuerzo semanal de DOSW equipo Azul</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
-	<properties>
-		<java.version>17</java.version>
-	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-		</dependency>
+		<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+	<!-- Spring Data MongoDB -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-data-mongodb</artifactId>
+	</dependency>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<annotationProcessorPaths>
-						<path>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</path>
-					</annotationProcessorPaths>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-	<repositories>
-		<repository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-		</pluginRepository>
-	</pluginRepositories>
+	<!-- Lombok -->
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<optional>true</optional>
+	</dependency>
+
+	<!-- Spring Boot DevTools -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-devtools</artifactId>
+		<scope>runtime</scope>
+		<optional>true</optional>
+	</dependency>
+
+	<!-- Spring Boot Test (incluye JUnit, Mockito, AssertJ, etc.) -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+
+	<!-- Swagger UI  -->
+	<dependency>
+		<groupId>org.springdoc</groupId>
+		<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+		<version>2.2.0</version>
+	</dependency>
+
+	<!-- JUnit Jupiter  -->
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+
+<!-- PLUGINS  -->
+<build>
+	<plugins>
+		<!-- Maven Compiler Plugin con Lombok -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<configuration>
+				<annotationProcessorPaths>
+					<path>
+						<groupId>org.projectlombok</groupId>
+						<artifactId>lombok</artifactId>
+						<version>${lombok.version}</version>
+					</path>
+				</annotationProcessorPaths>
+			</configuration>
+		</plugin>
+
+		<!-- Spring Boot Maven Plugin -->
+		<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+			<configuration>
+				<excludes>
+					<exclude>
+						<groupId>org.projectlombok</groupId>
+						<artifactId>lombok</artifactId>
+					</exclude>
+				</excludes>
+			</configuration>
+		</plugin>
+
+		<!-- JaCoCo: Cobertura de pruebas -->
+		<plugin>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.10</version>
+			<executions>
+				<execution>
+					<goals>
+						<goal>prepare-agent</goal>
+					</goals>
+				</execution>
+				<execution>
+					<id>report</id>
+					<phase>test</phase>
+					<goals>
+						<goal>report</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+
+		<!-- SonarQube: Análisis de calidad -->
+		<plugin>
+			<groupId>org.sonarsource.scanner.maven</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>3.9.1.2184</version>
+		</plugin>
+	</plugins>
+</build>
 
 </project>

@@ -78,30 +78,30 @@ mvn sonar:sonar -Dsonar.login=TU_TOKEN
     ```
 3. SONARQUEBE: Para análisis de calidad de código.
     ```xml
-        <!-- SonarQube -->
-        <dependency>
-            <groupId>org.sonarsource.scanner.maven</groupId>
-            <artifactId>sonar-maven-plugin</artifactId>
-            <version>3.9.1.2184</version>
-        </dependency>
+    <!-- SonarQube -->
+    <dependency>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.9.1.2184</version>
+    </dependency>
     ```
-4. LOMBOK: Para reducir el código boilerplate.
-  ```xml
-  <!-- Lombok -->
+   4. LOMBOK: Para reducir el código boilerplate.
+   ```xml
+    <!-- Lombok -->
     <dependency>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
         <optional>true</optional>
-    </dependency>
-  ```
+      </dependency>
+   ```
 5. SWAGGER UI: Para documentación de la API.
     ```xml
-     <!-- Swagger UI -->
-    <dependency>
+      <!-- Swagger UI -->
+      <dependency>
         <groupId>org.springdoc</groupId>
         <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
         <version>2.2.0</version>
-    </dependency>
+      </dependency>
     ```
 ### 3. Estrategia de Ramas GITFLOW y Commits:
 1. Definir la estrategia de ramas en Git:
