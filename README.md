@@ -222,7 +222,7 @@ Representa cada línea de producto en una venta: cantidad, precio unitario y sub
 ---
 
 ###  Factura (Invoice)
-Gestiona la facturación electrónica del sistema. Calcula subtotales, impuestos y genera números de factura únicos según regulaciones de la **DIAN**.
+Gestiona la facturación electrónica del sistema. Calcula subtotales, impuestos y genera números de factura únicos según regulaciones basicas.
 
 **Relaciones:**
 - Generada por una Venta (1:1)
