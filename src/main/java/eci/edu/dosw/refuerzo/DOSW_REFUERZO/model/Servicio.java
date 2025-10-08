@@ -1,4 +1,9 @@
 package eci.edu.dosw.refuerzo.DOSW_REFUERZO.model;
 
-public class Servicio {
+
+import java.math.BigDecimal;
+
+public interface Servicio {
+    String getNombre();
+    BigDecimal getCostoBase();
 }

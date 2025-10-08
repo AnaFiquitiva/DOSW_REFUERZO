@@ -1,4 +1,4 @@
-package eci.edu.dosw.refuerzo.DOSW_REFUERZO.service.impl;
+package eci.edu.dosw.refuerzo.DOSW_REFUERZO.service.interfaces;
 import eci.edu.dosw.refuerzo.DOSW_REFUERZO.dto.CitaResponse;
 import eci.edu.dosw.refuerzo.DOSW_REFUERZO.dto.CrearCitaRequest;
 

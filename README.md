@@ -366,3 +366,98 @@ Se aplicaron los principios **SOLID** en el diseño del sistema PetCare 360:
     - `ItemVenta` puede depender de una estrategia de cálculo (Strategy Pattern) en lugar de lógica fija.
     - `Factura` encapsula la creación de su número único con un método fábrica, sin depender de generadores externos.
 
+---
+# Semana 2:
+
+Actualización de diagramas:
+- Diagrama de Clases:
+
+![](documents/uml/Diagrama%20de%20Clases.png)
+ 
+- Diagrama de Secuencia
+
+![](documents/uml/AgendarCita.png)
+![](documents/uml/ConsultarCita.png)
+![](documents/uml/CancelarCita.png)
+
+- Diagrama de Casos de uso
+![](documents/uml/DiagramaCasosUso.png)
+
+# PetCare API
+
+## Historias de Usuario y Criterios de Aceptación
+
+---
+
+### Historia 1: Agendar Cita Médica
+
+**Como** dueño de una mascota,  
+**quiero** agendar una cita médica,  
+**para que** mi mascota pueda recibir atención veterinaria.
+
+#### Criterios de Aceptación:
+
+- **Dado** que soy un dueño registrado,  
+  **cuando** envío una solicitud `POST` a `/citas` con los datos de la mascota (`nombre`, `tipo`, `edad`), veterinario, fecha/hora y motivo,  
+  **entonces** el sistema debe crear la cita y devolver un código **`201 Created`** con los detalles de la cita.
+
+- **Dado** que un veterinario ya tiene una cita programada a la misma fecha y hora,  
+  **cuando** intento agendar otra cita para ese mismo veterinario en ese horario,  
+  **entonces** el sistema debe devolver un error **`409 Conflict`** con un mensaje descriptivo (ej: "El veterinario ya tiene una cita en esa fecha y hora.").
+
+- **Dado** que proporciono una fecha/hora en el pasado,  
+  **cuando** intento agendar la cita,  
+  **entonces** el sistema debe devolver un error **`400 Bad Request`** con un mensaje como "La fecha de la cita no puede ser en el pasado.".
+
+---
+
+### Historia 2: Consultar Cita
+
+**Como** dueño de una mascota,  
+**quiero** consultar los detalles de una cita existente,  
+**para que** pueda verificar la información.
+
+#### Criterios de Aceptación:
+
+- **Dado** que tengo una cita agendada con ID `123`,  
+  **cuando** realizo una solicitud `GET` a `/citas/123`,  
+  **entonces** el sistema debe devolver un código **`200 OK`** con los detalles completos de la cita (mascota, veterinario, fecha, motivo, etc.).
+
+- **Dado** que consulto una cita con un ID inexistente (ej: `/citas/999`),  
+  **cuando** realizo la solicitud,  
+  **entonces** el sistema debe devolver un error **`404 Not Found`**.
+
+---
+
+### Historia 3: Cancelar Cita
+
+**Como** dueño de una mascota,  
+**quiero** cancelar una cita agendada,  
+**para que** pueda reprogramarla si es necesario.
+
+#### Criterios de Aceptación:
+
+- **Dado** que tengo una cita agendada con ID `123`,  
+  **cuando** realizo una solicitud `DELETE` a `/citas/123`,  
+  **entonces** el sistema debe eliminar la cita y devolver un código **`204 No Content`**.
+
+- **Dado** que intento cancelar una cita cuya fecha/hora ya ha pasado,  
+  **cuando** realizo la solicitud,  
+  **entonces** el sistema debe devolver un error **`400 Bad Request`** con un mensaje como "No se puede cancelar una cita que ya ha ocurrido.".
+
+---
+
+### Historia 4: Ver Citas del Veterinario
+
+**Como** veterinario,  
+**quiero** ver la lista de todas mis citas asignadas,  
+**para que** pueda organizar mi agenda diaria.
+
+#### Criterios de Aceptación:
+
+- **Dado** que soy un veterinario con ID `45`,  
+  **cuando** realizo una solicitud `GET` a `/veterinarios/45/citas`,  
+  **entonces** el sistema debe devolver un código **`200 OK`** con una lista (posiblemente vacía) de todas mis citas futuras, ordenadas por fecha/hora.
+
+---
+

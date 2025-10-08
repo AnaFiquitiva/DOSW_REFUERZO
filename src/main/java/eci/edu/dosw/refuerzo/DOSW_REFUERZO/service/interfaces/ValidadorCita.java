@@ -1,4 +1,5 @@
-package eci.edu.dosw.refuerzo.DOSW_REFUERZO.service.impl;
+package eci.edu.dosw.refuerzo.DOSW_REFUERZO.service.interfaces;
+import eci.edu.dosw.refuerzo.DOSW_REFUERZO.exception.CitaConflictivaException;
 import eci.edu.dosw.refuerzo.DOSW_REFUERZO.model.Cita;
 import eci.edu.dosw.refuerzo.DOSW_REFUERZO.repository.CitaRepository;
 import org.springframework.stereotype.Component;

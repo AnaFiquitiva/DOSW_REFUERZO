@@ -1,4 +1,8 @@
 package eci.edu.dosw.refuerzo.DOSW_REFUERZO.repository;
+import eci.edu.dosw.refuerzo.DOSW_REFUERZO.model.Veterinario;
 
-public class VeterinarioRepository {
+import java.util.Optional;
+
+public interface VeterinarioRepository {
+    Optional<Veterinario> findById(Long id);
 }
